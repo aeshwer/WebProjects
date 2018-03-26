@@ -154,6 +154,129 @@ footer img   {
     background: #EFEFEF;
 }
 
+/*About*/
+
+.about {
+    background: #ECF0F1;
+    width: 100%;
+    padding: 50px 0;
+}
+
+
+.service-box  {
+    display: inline-block;
+    width: 24%;
+    padding: 20px 30px;
+    line-height: 1;
+}
+
+.service-box img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.service-box h5 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 300px;
+    letter-spacing: 2px;
+}
+
+
+/* TESTIMONIALS */
+
+.testimonial-box {
+    display: inline-block;
+    width: 27%;
+    padding: 20px 30px;   
+}
+
+.testimonial-content {
+    background: #ECF0F1;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.testimonial-author img {
+    float: left; 
+    width: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.testimonial-author h5 {
+    font-size: 18px;
+    margin: 0;
+    padding-top: 15px;
+}
+
+testimonial-author span {
+    color: #999;
+    font-size:14px;
+}
+
+/*mobile responsive*/
+
+@media screen and (max-width: 768px) {
+
+    /* HEADER   */
+    header #page-header {
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    header #main-navigation {
+        width: 100%;
+        display: block; 
+        text-align: center;
+    }
+    
+    
+       
+/*  HERO  */
+    .hero {
+        min-height: 300px;
+    }
+    .hero-content {
+        padding-top: 80px;
+    }
+    .hero-title {
+        font-size: 30px;
+    }
+    .hero-content p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    .hero-content a {
+        font-size: 14px;
+        padding: 10px 15px;
+        border-width: 1px;
+        background: #FFF;
+        color: #333;
+        
+    }
+    
+//last 2 are for mobile compatiblity 
+
+/* FEATURE BOXES   */
+    .service-box {
+        width: 100%;
+        display: block;
+    }
+    
+/* TESTIMONIAL BOXES   */
+    .testimonial-box {
+        width: 100%;
+        display: block;
+}
+
+
+
 
 
 
