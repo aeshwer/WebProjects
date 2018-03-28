@@ -56,7 +56,9 @@ header {
 }
 
 h1 {
-    margin:0
+    margin:0;
+    color: #fff;
+    font-size: 200%;
 }
 
 .hero-text-box {
