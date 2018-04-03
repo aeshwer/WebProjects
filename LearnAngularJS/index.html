@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+   <div ng-init ="names=['aeshwer','tushar','Ram','ved']">
+     <strong>Name:</strong> <input type="text" data-ng-model = "nameText">
+      <h3>Iterating</h3>
+      
+      <ul>
+          <li ng-repeat = "name in names | filter:nameText | orderBy:'name'">{{name | uppercase}}</li>
+      </ul>
+  
+    </div>
+    
+</body>
+</html>
