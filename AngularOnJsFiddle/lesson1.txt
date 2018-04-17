@@ -1,0 +1,22 @@
+HTML
+
+<div ng-app="bankApp">
+  <ul ng-controller="balancesController">
+      <li ng-repeat="user in users | orderBy:'name' "> 
+        {{user.name | uppercase}}  - {{user.balance | currency}}      
+      </li>
+  </ul>
+</div>
+
+
+JS+Angular :(LoadType: No Wrap -in <head>)
+
+var app = angular.module("bankApp",[]);
+
+app.controller("balancesController",function($scope){
+	$scope.users = [ 
+  {"name": "Kevin Smith"   ,"balance": 1757},
+  {"name": "Jessi Max"     ,"balance": 7817},
+  {"name": "Aeshwer Tyagi" ,"balance": 9842}
+  ];
+});
