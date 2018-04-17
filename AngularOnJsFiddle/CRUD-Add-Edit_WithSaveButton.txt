@@ -16,7 +16,8 @@ HTML
        </li>
       
       <li>
-        <button ng-click="addNew()">Add new user</button>
+        <button ng-click="save(current)">Save</button>
+        <button ng-click="addNew(current)">Add new user</button>
       </li>      
   </ul>
 </div>
@@ -32,9 +33,9 @@ app.controller("balancesController",function($scope){
   {"name": "Aeshwer Tyagi" ,"balance": 9842}
   ];
   
-  $scope.addNew = function(){
+  $scope.addNew = function(user){
   alert("add new called");
-  $scope.users.push({"name": "Steve Woznial" ,"balance": 7874});
+  $scope.users.push(user);
   }
     
   $scope.remove = function(user){
@@ -45,8 +46,10 @@ app.controller("balancesController",function($scope){
   
   $scope.edit = function(user){
   $scope.current = user;
- 
+  }
   
+  $scope.save = function(user){
+   $scope.current = {};
   }
   
 });
