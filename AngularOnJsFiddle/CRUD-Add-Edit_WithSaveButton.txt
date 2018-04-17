@@ -50,3 +50,8 @@ app.controller("balancesController",function($scope){
   }
   
 });
+
+
+CSS
+ul{list-style-type:none}
+li{margin-top:5px}
