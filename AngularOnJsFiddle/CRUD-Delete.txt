@@ -34,3 +34,8 @@ app.controller("balancesController",function($scope){
   $scope.users.splice(index,1);
   }
 });
+
+
+
+CSS
+ul{list-style-type:none}
