@@ -1,0 +1,36 @@
+HTML
+
+<div ng-app="bankApp">
+  <ul ng-controller="balancesController">
+      <li ng-repeat="user in users | orderBy:'balance' "> 
+        {{user.name | lowercase}}  - {{user.balance | currency}}     
+        <a href="#" ng-click="remove(user)">Delete</a>
+      </li>
+      <li>
+        <button ng-click="addNew()">Add new user</button>
+      </li>      
+  </ul>
+</div>
+
+JS+Angular :(LoadType: No Wrap -in <head>)
+
+var app = angular.module("bankApp",[]);
+
+app.controller("balancesController",function($scope){
+	$scope.users = [ 
+  {"name": "Kevin Smith"   ,"balance": 1757},
+  {"name": "Jessi Max"     ,"balance": 7817},
+  {"name": "Aeshwer Tyagi" ,"balance": 9842}
+  ];
+  
+  $scope.addNew = function(){
+  alert("add new called");
+  $scope.users.push({"name": "Steve Woznial" ,"balance": 7874});
+  }
+    
+  $scope.remove = function(user){
+  var index = $scope.users.indexOf(user);
+  alert("Remove User : "+ index);
+  $scope.users.splice(index,1);
+  }
+});
