@@ -1,0 +1,23 @@
+HTML
+
+<div ng-app="httpApp" ng-controller="httpController">
+
+  <ul>
+    <li ng-repeat="u in users">{{u.name}}</li>
+  </ul>
+  
+</div>
+
+JS+Angular :(LoadType: No Wrap -in <head>)
+
+var app = angular.module("httpApp",[]);
+
+app.controller("httpController" , function($scope,$http){
+	$http.get("https://jsonplaceholder.typicode.com/users")
+  .success(function(result){
+  	$scope.users=result;
+  
+  });
+
+});
+

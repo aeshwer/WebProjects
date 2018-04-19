@@ -1,0 +1,42 @@
+Note: we want to achive what: here we select post then on changing post we get relevent commnets for that posts :: use of ng-change is learnt and how ng-models makes the modeled variable available in the scope for the controller to use
+
+
+HTML
+
+<div ng-app="filterApp" ng-controller="httpController">
+  
+  <select ng-model ="posting" ng-change="handleChange(posting)">
+    <option ng-repeat ="post in posts" value = "{{post.id}}">
+    {{post.id + ". "+ post.title}}
+    </option>
+  </select>
+  
+  <ul>
+    <li ng-repeat ="c in comments">
+      {{c.email}} - {{c.body}}      
+    </li>  
+  </ul>
+  
+</div>
+
+
+
+JS+Angular :(LoadType: No Wrap -in <head>)
+
+
+var app = angular.module("filterApp",[]);
+
+app.controller("httpController" , function($scope,$http){
+	$http.get("https://jsonplaceholder.typicode.com/posts")
+  .success(function(result){
+  	$scope.posts=result;  
+  });
+
+	$scope.handleChange = function(postingId){
+  	 $http.get("https://jsonplaceholder.typicode.com/comments?postId=" + postingId)
+     .success(function(postComments){
+  		$scope.comments=postComments;  
+  		});          
+  };
+  
+});
