@@ -1,0 +1,43 @@
+HTML
+
+<div ng-app="ValidationAndBinding" ng-controller="usersrController">
+ <input type="text" ng-model="editUser.name">
+ <button ng-click = "save(editUser)">Save</button>
+    <ul >
+        <li ng-repeat ="u in users">
+        <a href="#" ng-click="edit(u)">{{u.name}}</a>
+        </li>
+    </ul>
+        
+</div>
+
+JS+Angular :(LoadType: No Wrap -in <head>)
+
+
+var app = angular.module("ValidationAndBinding",[]);
+
+app.controller("usersrController" , function($scope,$http){
+ $http.get("https://jsonplaceholder.typicode.com/users")
+ 	.success(function(result){ 
+ 		$scope.users =result;
+ 	});
+  
+  $scope.editUser={name:""};
+  
+ 	$scope.save =function(u){
+    $scope.currentUser.name=u.name;
+  }
+  
+  $scope.edit =function(u){
+  $scope.currentUser= u;
+  $scope.editUser.name= u.name;  // this sets the edit user to cuurnet so blank is not displayed at edit time
+  
+  };
+     
+});
+
+
+
+CSS
+
+.error{color: #900;}

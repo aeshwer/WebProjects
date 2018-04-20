@@ -1,0 +1,50 @@
+HTML
+
+<div ng-app="ValidationAndBinding" ng-controller="usersrController">
+  <form name="myForm">
+   <div  ng-hide ="editedUser == undefined">  
+   <input type="text" name="userName" ng-model="editedUser.name" required />
+   <span class= "error" ng-show ="myForm.userName.$error.required">Required!</span>
+     <button ng-click="save(editedUser)" ng-hide ="myForm.userName.$error.required">Save</button>
+     </div>
+      <ul >
+          <li ng-repeat ="u in users">
+          <a href="#" ng-click="edit(u)">{{u.name}}</a>
+          </li>
+      </ul>
+ </form>       
+ </div>
+ 
+ 
+
+JS+Angular :(LoadType: No Wrap -in <head>)
+
+var app = angular.module("ValidationAndBinding",[]);
+
+app.controller("usersrController" , function($scope,$http){
+ $http.get("https://jsonplaceholder.typicode.com/users")
+ 	.success(function(result){ 
+ 		$scope.users =result;
+ 	});
+  
+  $scope.editedUser=undefined;
+  
+  
+ 	$scope.save =function(u){
+    $scope.currentUser.name=u.name;
+    $scope.editedUser=undefined;
+  }
+  
+  $scope.edit =function(u){
+  $scope.currentUser= u;
+  $scope.editedUser={name:""};
+  $scope.editedUser.name= u.name;  // this sets the edit user to cuurnet so blank is not displayed at edit time
+  
+  };
+     
+});
+
+
+CSS
+
+.error{color: #900;}
