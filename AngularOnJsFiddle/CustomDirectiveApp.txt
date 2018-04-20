@@ -1,8 +1,11 @@
+NOTE : =user --> equalto notation used when we need object  , @label -->@ motation used for string input 
+
+
 HTML
 
 <div ng-app="userListApp" ng-controller="userListCont">
     <!--special user at Top  -->
-    <div class= "highlight" ngc-custom-user user="current"> </div>
+    <div class= "highlight" ngc-custom-user user="current"  label="*"> </div>
     
     <div ng-repeat="u in users" ngc-custom-user user="u">
      </div>
@@ -31,8 +34,8 @@ app.controller("userListCont" , function($scope,$http){
 
 app.directive("ngcCustomUser",function(){
 	return{
-  scope : { u : "=user" },
-  template : "<strong>{{u.name}}</strong> <br />"+
+  scope : { u : "=user" ,l: "@label"},
+  template : "<strong>{{l}}{{u.name}}</strong> <br />"+
         "{{u.email}}<br />"+
         "{{u.phone}}<br />"+
         "<a href=\"{{u.website}}\"> {{u.website}}</a>"              
