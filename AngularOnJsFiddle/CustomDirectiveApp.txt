@@ -1,0 +1,40 @@
+HTML
+
+<div ng-app="userListApp" ng-controller="userListCont">
+    <!--special user at Top  -->
+    <div class= "highlight" ngc-custom-user user="current"> </div>
+    
+    <div ng-repeat="u in users" ngc-custom-user user="u">
+     </div>
+</div>
+
+ 
+
+JS+Angular :(LoadType: No Wrap -in <head>)
+
+var app = angular.module("userListApp",[]);
+
+app.controller("userListCont" , function($scope,$http){
+	$http.get("https://jsonplaceholder.typicode.com/users")
+  .success(function(result){
+  	$scope.users=result;
+  
+  });
+  
+  $scope.current=
+	{	name: "Aeshwer Tyagi",
+  	email: "aeshwer.tyagi16@gmail.com",
+    phone: "9161302616",
+    wesite: "iontradeing.com"    
+	};
+});
+
+app.directive("ngcCustomUser",function(){
+	return{
+  scope : { u : "=user" },
+  template : "<strong>{{u.name}}</strong> <br />"+
+        "{{u.email}}<br />"+
+        "{{u.phone}}<br />"+
+        "<a href=\"{{u.website}}\"> {{u.website}}</a>"              
+  };
+});
