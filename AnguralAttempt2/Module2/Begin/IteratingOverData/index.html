@@ -5,8 +5,10 @@
 </head>
 <body ng-init="names=['Dave','Jeff','Heedy','Danny']">
 
-
-
+    <ol>
+        <li ng-repeat="name in names">{{name}}</li>
+    </ol>
+    
     <script src="angular.js"></script>
 </body>
 </html>
