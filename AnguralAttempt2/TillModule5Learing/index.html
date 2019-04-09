@@ -3,31 +3,17 @@
 <head>
     <title>Library Management System</title>
     <h1>Library Management System</h1>
-    <link href="styles.css" rel="stylesheet" type="text/css" />
+  <link href="styles/styles.css" rel="stylesheet" type="text/css" />
     
-</head>
-<body ng-controller="BookDetailsController">    
-    <h2>Books Database</h2>
-    Search: <input type="text" ng-model="bookDetailsFilter.name" />
-    <br/><br/>
-    <table>
-        <tr>
-            <th ng-click="doSort('name')">Book Title</th>
-            <th ng-click="doSort('author')">Author</th>
-            <th ng-click="doSort('price')">Price</th>
-            <th ng-click="doSort('details')">Details</th>        
-        </tr>
-        <tr ng-repeat="book in bookDetails | filter:bookDetailsFilter | orderBy:sortBy:reverse" >        
-            <td>{{ book.name }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.price }}</td>
-            <td>{{ book.details }}</td>
-        </tr>
-    </table> 
-    <br /> 
+ </head>
+ <body>    
     
-    <script src="angular.js"></script>
-    <script src="app.js"></script>
-    <script src="bookDetailsController.js"></script>
+    <div ng-view></div>
+    
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="app/app.js"></script>  
+    <script src="app/controllers/bookDetailsController.js"></script>
+    <script src="app/controllers/detailsController.js"></script>
 </body>
 </html>
