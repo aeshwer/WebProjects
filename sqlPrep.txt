@@ -1,0 +1,28 @@
+SQL Questions: 
+
+TABLES:
+1)Use of Dual Table- used to perform Calcualtion,sequence generate and to select pseudo columns(sysdate or user)
+	Eg:
+	select 1*13 from  dual;   //(It has 1 row and 1 column and we can add more)
+	select user from  dual;
+        select sysdate from  dual;
+	select Rownum r from  dual Connect By Rownum<=10;   (seq generate till 10)
+
+2) How to backUp Table:
+	We can use CTAS(Create As)
+	Eg: select * from tableNew AS select * from tableSource
+
+3) Can we drop all columns from a table?
+	No - we get ORA-12983 error
+
+4) What are Pseudo Column: behave like table column but are not stored in table,we can select them but cannot insert , update or delete their values
+	Eg: Sysdate, RowID, RowNum ,etc
+
+5) Diff between count(1) vs count(*)
+	Nothing , They both are same in every aspect (return number of not null rows)
+
+FILTERS:
+1) Difference Between EXISTS and IN when using in subQuery?
+	In : inner query is executed first and result is used for outer query . Inner query ran only once
+	EXISTS : first row from outer query is selected , then inner query is executed and the outer query uses this output.The process then repeats for all rows of outer query
+	
