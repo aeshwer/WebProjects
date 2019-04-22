@@ -25,4 +25,45 @@ FILTERS:
 1) Difference Between EXISTS and IN when using in subQuery?
 	In : inner query is executed first and result is used for outer query . Inner query ran only once
 	EXISTS : first row from outer query is selected , then inner query is executed and the outer query uses this output.The process then repeats for all rows of outer query
+
+2) Difference Between HAVING and WHERE?
+	WHERE : is used to filter out the data "before" the aggregation takes place 
+	HAVING : is used to filter out the data "after" the aggregation takes place 
+	Eg:
+	select payment_term_detail_num from ref_payment_term_detail where payment_term_detail_num in(114,110,12,13)
+	group by payment_term_detail_num having sum(payment_term_detail_num) >15
+
+DELETE AND TRUNCATE
+1) Which is faster between the two?
+	DELETE : used to selectively delete rows using where if not given where then all rows are deleted. We need to commit or rollback to do/undo changes.Deletes triggers on that table are fired.
+	TRUNCATE : removes all rows from table.It dont affect triggers or dependencies. We cannot rollback.It is faster than delete 
+
+2) Can we delete a record from more than one table simultaneously?
+	Yes, Eg:
+	Delete t1,t2 from t1 INNERJOIN t2 where t1.id=t2.id AND t2.id=t3.id; 
+
+3) How to delete duplicate records?
+	Scenario : Table columns : department_Id, department_name ,branch . We have 2 same records.
+	solution : we have no way of identifying thes 2 same rows, so we use pseudo column rowid and find minimum of both and delete one of them. Eg:
+		delete from department d1 where d1.rowid >
+		(    select min(d2.rowid) from department d2
+		     where d1.department_Id, = d2.department_Id;
+              	     and   d1.department_name = d2.department_name;
+	             and   d1.branch=d2.branch;
+		)
+
+JOINS
+1)  INNER : returns all rows from multiple table which match the condition
+    LEFT OUTER :  returns all rows from left hand table specified in the "ON" condition and only thoes rows from other table whre joined fields are equal.
+    SELF JOIN : table joins by itself
+	Eg: select e1.name as employee_name
+                   e2.ename as manager_name
+		from emp e1, emp e2
+		where e1.mgr = e2.empno;		
+ 
+	
+	
+
+	
+
 	
