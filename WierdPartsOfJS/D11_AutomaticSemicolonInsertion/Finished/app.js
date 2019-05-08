@@ -1,4 +1,5 @@
 // syntax parser:  automatix semi colon insertion --- be careful
+//Problem Code
 function getPerson() {
  
     return 
@@ -10,6 +11,7 @@ function getPerson() {
 
 console.log(getPerson()); // undefined
 
+//Correct code since after return we have '{' so skipped ';'
 function getPerson() {
  
     return{

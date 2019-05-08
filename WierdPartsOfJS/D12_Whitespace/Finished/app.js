@@ -1,3 +1,5 @@
+//WHITESPACE -- carriage return,tabs,spaces --easy handling, no trick here
+
 var 
     // first name of the person
     firstname, 
