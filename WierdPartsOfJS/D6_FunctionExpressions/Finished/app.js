@@ -17,6 +17,8 @@ function log(a) {
    a();    
 }
 
+
+//creating function on the fly and passing funtion to a function
 log(function() {
     console.log('hi');   
 });
