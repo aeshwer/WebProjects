@@ -47,7 +47,7 @@ var person2 = {
 console.log(person.getFullName.apply(person2));
 
 //-----------------------------------------------------------------------------------------------------------
-// function currying
+// function currying -- Creating a copy of a funtion but with some preset params-- useful in mathematical library
 function multiply(a, b) {
     return a*b;   
 }
