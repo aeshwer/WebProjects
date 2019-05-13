@@ -1,0 +1,101 @@
+//Now we will try to add some functionality,Observe some design styles:
+// 1) We will add the method on the prototype object 
+// 2) We will try to avoid the new variables been attached on the returned Greetr object ? how?
+     // Answer---- read below comment
+
+
+(function(global, $) {
+    
+    var Greetr = function(firstName, lastName, language) {
+        return new Greetr.init(firstName, lastName, language);   
+    }
+    
+    var supportedLangs = ['en', 'es'];      // These variables lexical environment is all area within the function, so beacuse of                                               // closure even after the outer IIFE function gets over ,it has access to these vaiables
+    
+    var greetings = {
+        en: 'Hello',
+        es: 'Hola'
+    };
+    
+    var formalGreetings = {
+        en: 'Greetings',
+        es: 'Saludos'
+    };
+    
+    var logMessages = {
+        en: 'Logged in',
+        es: 'Inició sesión'
+    };
+    
+    Greetr.prototype = {
+        
+        fullName: function() {
+            return this.firstName + ' ' + this.lastName;   
+        },
+        
+        validate: function() {
+             if (supportedLangs.indexOf(this.language)  === -1) {        //'supportedLangs' is present lexically so we get it
+                throw "Invalid language";   
+             }
+        },
+        
+        greeting: function() {
+            return greetings[this.language] + ' ' + this.firstName + '!';
+        },
+        
+        formalGreeting: function() {
+            return formalGreetings[this.language] + ', ' + this.fullName();  
+        },
+        
+        greet: function(formal) {
+            var msg;
+            
+            // if undefined or null it will be coerced to 'false'
+            if (formal) {
+                msg = this.formalGreeting();  
+            }
+            else {
+                msg = this.greeting();  
+            }
+
+            if (console) {
+                console.log(msg);
+            }
+
+            // 'this' refers to the calling object at execution time
+            // makes the method chainable
+            return this;
+        },
+        
+        log: function() {
+            if (console) {
+                console.log(logMessages[this.language] + ': ' + this.fullName()); 
+            }
+                            
+            return this;
+        },
+                            
+        setLang: function(lang) {
+            this.language = lang;
+                    
+            this.validate();
+            
+            return this;     // returning 'this' makes this method chainable...just like builder pattern of java
+        }
+        
+    };
+    
+    Greetr.init = function(firstName, lastName, language) {
+        
+        var self = this;
+        self.firstName = firstName || '';
+        self.lastName = lastName || '';
+        self.language = language || 'en';
+        
+    }
+    
+    Greetr.init.prototype = Greetr.prototype;
+    
+    global.Greetr = global.G$ = Greetr;
+    
+}(window, jQuery));
