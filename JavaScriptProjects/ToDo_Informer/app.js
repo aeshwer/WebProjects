@@ -30,4 +30,4 @@ function addListAfterKeypress(event) {
 
 //Add events
 inputButton.addEventListener("click",addListAfterClick);
-inputButton.addEventListener("keypress", addListAfterKeypress);
+userInput.addEventListener("keypress", addListAfterKeypress);
