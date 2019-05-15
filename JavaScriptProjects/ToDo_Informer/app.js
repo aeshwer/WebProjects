@@ -1,3 +1,4 @@
+;(function(){
 var inputButton = document.getElementById("inputButton");
 var userInput = document.getElementById("userInput");
 var taskList = document.getElementById("taskList");
@@ -12,8 +13,20 @@ function createListElement() {
 	taskList.appendChild(li); //adds li to ul
 	userInput.value = ""; //Reset text input field
     
+    // START ADD DELETE BUTTON
+	var dBtn = document.createElement("button");
+	dBtn.appendChild(document.createTextNode("X"));
+	li.appendChild(dBtn);
+	dBtn.addEventListener("click", deleteListItem);
+	// END ADD DELETE BUTTON
+    
+    
+    //ADD CLASS DELETE (DISPLAY: NONE)
+	function deleteListItem(){
+		li.classList.add("delete")  //classlist adds the class to a particular div
+	}
+    
 }
-
 
 function addListAfterClick(){
 	if (inputLength() > 0) { //makes sure that an empty input field doesn't create a li
@@ -31,3 +44,4 @@ function addListAfterKeypress(event) {
 //Add events
 inputButton.addEventListener("click",addListAfterClick);
 userInput.addEventListener("keypress", addListAfterKeypress);
+}());

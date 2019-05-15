@@ -2,3 +2,12 @@ h1,h3 {
     color:blue;
     text-align:center;
 }
+
+.delete {
+	display: none;
+}
+
+.done {
+	background: #51DF70 !important;
+	color: #00891E;
+}
