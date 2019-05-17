@@ -27,9 +27,9 @@ function calculateTip(){
         if(inputLength(userBillAmount)<=0 || inputLength(selectedServiceType)<=0 ){
             alert('Please Enter Details for tip calculation');
         }
-        else{            
+        else{
             var tip = resolveTip();
-            console.log(tip);
+            clearResult();
             createTipElement(tip)
         }
 }
@@ -38,10 +38,16 @@ function clearInputFields(){
         userBillAmount.value ='';
         selectedServiceType.value ='';
         noOfPeople.value ='';
-        var elem = document.getElementById("calculatedTip");
-        elem.parentNode.removeChild(elem);
+        clearResult();
+       
 }
 
+function clearResult(){   
+        var elem = document.getElementById("calculatedTip");
+        elem.innerHTML=""; //can also be achived by jQuery
+}
+
+    
 //Adding events
 calculateButton.addEventListener("click",calculateTip);
 clearButton.addEventListener("click",clearInputFields);
