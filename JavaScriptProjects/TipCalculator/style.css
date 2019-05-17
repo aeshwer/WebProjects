@@ -9,6 +9,13 @@ body {
     border: 3px solid black;
 }
 
+.header-panel-region{
+  margin: auto;
+  width: 70%;  
+  padding: 10px;
+  text-align:right;      
+}
+
 .input-selector{    
   margin: auto;
   width: 70%;
@@ -21,4 +28,17 @@ body {
 
 input, select ,button{
   background-color : #d1d1d1;
+}
+
+.calculate-region{
+  margin: auto;
+  width: 70%;
+  border: 3px solid black;
+  padding: 10px;
+  text-align:center;
+  background-color:darkseagreen;
+}
+
+.clearTip {
+	display: none;
 }

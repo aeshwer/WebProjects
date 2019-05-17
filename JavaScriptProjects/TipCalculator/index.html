@@ -6,6 +6,11 @@
     </head>
     <body>
         <h3>How much was your bill?</h3>
+        
+          <div class="header-panel-region">              
+            <button id="clearButton" type="button" ><b>CLEAR</b></button>
+        </div> 
+        
         <div class="input-selector">
             <b>$</b>
             <input id="userBillAmount" type ="text">
@@ -14,10 +19,11 @@
         <h3>How much was your service?</h3>
         <div class="input-selector">
             <select name="service" id="selectedServiceType">
-                <option value="30%">30% Outstanding</option>
-                <option value="20%">20% Good</option>
-                <option value="10%">10% Ok</option>
-                <option value="5%">5% Bad</option>
+                <option selected disabled value="">Choose here</option>
+                <option value="30">30% Outstanding</option>
+                <option value="20">20% Good</option>
+                <option value="10">10% Ok</option>
+                <option value="5">5% Bad</option>
             </select>
         </div>
         
@@ -26,9 +32,14 @@
             <input id="noOfPeople" type ="text"> <b>people</b>            
         </div>  
         
-         <div class="input-selector">              
-            <button id="calculateButton" type="button" ><b>CALCULATE!</b></button>
+         <div class="calculate-region">              
+            <button id="calculateButton" type="button" ><b>CALCULATE!</b></button> 
+             <br><br>
+             <div id="calculatedTip">
+            </div>
         </div>   
+            
+        
     
     <script src= "app.js"></script>        
     </body>
