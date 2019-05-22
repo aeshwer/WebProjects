@@ -1,0 +1,6 @@
+1)Why is constant defined on global scope not attached on window object
+2)'this' keyword is dynamicaly scoped and rest are lexically
+	fixedby - 1) Arrow funtion are lexically bound ES6
+		  2) use bind(), apply(), call()
+		  3) use self
+3 Follwo DRY-dont repeat yourself
