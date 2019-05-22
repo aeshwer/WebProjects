@@ -1,0 +1,35 @@
+html{    
+    overflow: auto;    
+}
+
+h1 ,h3{    
+    color:Black;
+    text-align:center;
+}
+
+body {
+	background-color: seashell;
+    overflow: hidden;
+    border: 3px solid black;
+}
+
+.header-panel-region{
+  margin: auto;
+  width: 70%;  
+  padding: 10px;
+  text-align:right;      
+}
+
+.input-selector ,.calculate-region{    
+  margin: auto;
+  width: 70%;
+  border: 3px solid black;
+  padding: 10px;
+  text-align:center;
+  background-color:darkseagreen;
+}
+
+
+input, select ,button{
+  background-color : #d1d1d1;
+}
