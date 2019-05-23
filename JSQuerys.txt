@@ -3,4 +3,30 @@
 	fixedby - 1) Arrow funtion are lexically bound ES6
 		  2) use bind(), apply(), call()
 		  3) use self
-3 Follwo DRY-dont repeat yourself
+3) Follow DRY-dont repeat yourself
+4) Clone Arrays/objects  : 1) [].concat(arr)
+			   2) let newCloneObj = Object.assign({},sourceObject);
+			   3) let newCloneobject2 = {...sourceObject};
+	NOte: First 3 are shallow clone. For object inside object it wont work and we need deep Cloning
+			   4) let superClone = JSON.parse(JSON.stringify(obj))    //care extream deep object, memory problems/slowness
+s
+5) How to Compare equal object      
+	var user1 = {name : "nerd", org: "dev"};
+	var user2 = {name : "nerd", org: "dev"};
+	var eq = user1 == user2;
+	alert(eq); // gives false
+
+	//Works when you have simple JSON-style objects without methods and DOM nodes inside:
+	JSON.stringify(user2);  === JSON.stringify(user2);  //gives true
+	var eq = Object.toJSON(user1) == Object.toJSON(user2);  //gives true
+
+6) Type coercion occurs when we use '==' instead of '==='.It also hapens with if(). Always use'===' for safety
+7) Object.is(obj1,obj2) :  can be use to compare 2 object , it is kind of new to JS
+8) Babel:  JS compiler : converts from ES6 to ES5 , so that older browser can understand
+9) Template String : see example:
+	const name = 'Snickers';
+	const age = 2;
+	const sentence = `My dog ${name} is ${age * 7} years old.'`;
+	console.log(sentence);
+
+10)Closure : Also called lexical scoping.Where we write the function matters.It is a combination of funtion and lexical enviroment where it was declared
