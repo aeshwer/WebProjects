@@ -9,7 +9,7 @@
 			   3) let newCloneobject2 = {...sourceObject};
 	NOte: First 3 are shallow clone. For object inside object it wont work and we need deep Cloning
 			   4) let superClone = JSON.parse(JSON.stringify(obj))    //care extream deep object, memory problems/slowness
-s
+
 5) How to Compare equal object      
 	var user1 = {name : "nerd", org: "dev"};
 	var user2 = {name : "nerd", org: "dev"};
@@ -29,4 +29,10 @@ s
 	const sentence = `My dog ${name} is ${age * 7} years old.'`;
 	console.log(sentence);
 
-10)Closure : Also called lexical scoping.Where we write the function matters.It is a combination of funtion and lexical enviroment where it was declared
+10) Closure : Also called lexical scoping.Where we write the function matters.It is a combination of funtion and lexical enviroment where it was declared
+11) Prototype Inheritance  : childObj.__proto__ = objectToInheritFrom
+	NOTE: __proto__ not recomended: dont create a prototype chain yourself, there are other work arounds
+	NOte: __proto__ links to prototype:{} of superclass. Actually __proto__ points to prototype:{} object .
+
+12) How to inhert other than using __proto__:: -->>> let childObj = Object.create(parentObject). This creates a e,pty child object and makes a prototype chain to parentObject
+13) Only Function have 'prototype property', expect the 'Object' which is at top (Note typeof Object is Function) 
