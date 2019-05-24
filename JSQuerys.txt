@@ -1,7 +1,7 @@
 1)Why is constant defined on global scope not attached on window object
 2)'this' keyword is dynamicaly scoped and rest are lexically
 	fixedby - 1) Arrow funtion are lexically bound ES6
-		  2) use bind(), apply(), call()
+		  2) use bind(), apply(), call()  --(bind() returns a funtion with context and other 2 invokes the function)
 		  3) use self
 3) Follow DRY-dont repeat yourself
 4) Clone Arrays/objects  : 1) [].concat(arr)
@@ -35,4 +35,5 @@
 	NOte: __proto__ links to prototype:{} of superclass. Actually __proto__ points to prototype:{} object .
 
 12) How to inhert other than using __proto__:: -->>> let childObj = Object.create(parentObject). This creates a e,pty child object and makes a prototype chain to parentObject
-13) Only Function have 'prototype property', expect the 'Object' which is at top (Note typeof Object is Function) 
+13) Only Function have 'prototype property', expect the 'Object' which is at top (Note typeof Object is Function).'Object.prototype' is the very last object.We can add properties to prototype so it flows down to child object.
+14)
