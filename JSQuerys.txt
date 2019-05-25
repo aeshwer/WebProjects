@@ -32,8 +32,8 @@
 10) Closure : Also called lexical scoping.Where we write the function matters.It is a combination of funtion and lexical enviroment where it was declared
 11) Prototype Inheritance  : childObj.__proto__ = objectToInheritFrom
 	NOTE: __proto__ not recomended: dont create a prototype chain yourself, there are other work arounds
-	NOte: __proto__ links to prototype:{} of superclass. Actually __proto__ points to prototype:{} object .
+	NOte: __proto__ links to prototype:{} of superclass. Actually __proto__ points to prototype:{} object.
 
 12) How to inhert other than using __proto__:: -->>> let childObj = Object.create(parentObject). This creates a e,pty child object and makes a prototype chain to parentObject
 13) Only Function have 'prototype property', expect the 'Object' which is at top (Note typeof Object is Function).'Object.prototype' is the very last object.We can add properties to prototype so it flows down to child object.
-14)
+14) How to clone 2 object = const cloneObj = {...sourceObj} . Be carefull here as we dont have these 2 obect each (===) since the prototypal link is not cloned.
