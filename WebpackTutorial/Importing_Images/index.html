@@ -1,0 +1,39 @@
+<!--PACKAGE.JSON : keep track of all dependencies needed by the project including webpack itself
+Steps : 
+1) run command :  npm init -y : geenrate default package json for our project.
+2) run command :  npm install webpack webpack-cli --save-dev :Now we can install webpack .'--save-dev' add webpack as development depency in package.json
+3)Configure webpack : done by adding config in 'webpack.config.js' . Create this file
+
+Creating config file:
+->> mention entry poiny file 
+->> output file and its name and path
+->> mention mode
+
+In package.json add a script called "build" which runs webpack.
+
+Now add changes in project - export /imports and then do this - 
+1)nom run build
+
+NOTE--------------------------For importing images we need to add rules for that in webpack.config.js
+1) add 'module' property , it has rules array in  it and has 2 properties --'test' and 'use' .
+2) add regix in 'test' for filetype.
+3) For 'use' put the type of loader.
+4) run command :  npm install file-loader --save-dev
+
+
+
+-->
+<!DOCTYPE html>
+
+<html lang="en">
+<head>    
+		<title>Hello World</title>
+		<meta charset="utf-8">		
+</head>
+<body> 
+    <!--index.js depends on hello-world.js  ..index.js needs to put it below as per dependecy-->
+    <script src ="./dist/bundle.js"></script>
+    <!--<script src ="./src/index.js"></script>   -->
+    <!--    <script src ="./src/hello-world.js"></script>--> 
+</body>
+</html>
