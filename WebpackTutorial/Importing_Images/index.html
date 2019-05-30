@@ -19,6 +19,8 @@ NOTE--------------------------For importing images we need to add rules for that
 2) add regix in 'test' for filetype.
 3) For 'use' put the type of loader.
 4) run command :  npm install file-loader --save-dev
+5) run command :  npm run build and see output.
+4) we will have problem as we need to give md5 path of image  which is there in 'dist' folder after we do webpack--.... add 1 more property in webpack.config....called 'publicPath' in 'output' 
 
 
 
@@ -28,7 +30,7 @@ NOTE--------------------------For importing images we need to add rules for that
 <html lang="en">
 <head>    
 		<title>Hello World</title>
-		<meta charset="utf-8">		
+		<meta charset="utf-8">    		
 </head>
 <body> 
     <!--index.js depends on hello-world.js  ..index.js needs to put it below as per dependecy-->
