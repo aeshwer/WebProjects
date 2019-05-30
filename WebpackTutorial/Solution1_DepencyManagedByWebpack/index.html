@@ -11,6 +11,9 @@ Creating config file:
 
 In package.json add a script called "build" which runs webpack.
 
+Now add changes in project - export /imports and then do this - 
+1)nom run build
+
 -->
 <!DOCTYPE html>
 
@@ -22,7 +25,8 @@ In package.json add a script called "build" which runs webpack.
 </head>
 <body> 
     <!--index.js depends on hello-world.js  ..index.js needs to put it below as per dependecy-->
-    <script src ="./src/index.js"></script>   
-    <script src ="./src/hello-world.js"></script>
+    <script src ="./dist/bundle.js"></script>
+    <!--<script src ="./src/index.js"></script>   -->
+    <!--    <script src ="./src/hello-world.js"></script>--> 
 </body>
 </html>
