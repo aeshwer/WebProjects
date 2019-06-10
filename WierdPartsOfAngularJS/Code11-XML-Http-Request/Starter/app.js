@@ -20,7 +20,4 @@ myApp.controller('mainController', ['$scope', '$filter', function($scope, $filte
     
     console.log($scope.rules);
     
-    $scope.clickedButton = function(){
-        alert("Hello User")
-    }
 }]);
