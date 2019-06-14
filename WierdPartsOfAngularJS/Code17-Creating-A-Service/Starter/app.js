@@ -1,5 +1,3 @@
-//Note: observe the pattern matching, where u pass variables in routes
-
 var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.config(function ($routeProvider) {
@@ -29,7 +27,7 @@ myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
     
 }]);
 
-myApp.controller('secondController', ['$scope', '$log', '$routeParams',  function($scope, $log, $routeParams) {
+myApp.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams) {
     
     $scope.num = $routeParams.num || 1;
     
