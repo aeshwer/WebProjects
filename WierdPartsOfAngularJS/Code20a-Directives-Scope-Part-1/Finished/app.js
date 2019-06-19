@@ -47,3 +47,7 @@ myApp.directive("searchResult", function() {
        }
    }
 });
+
+//Note : A-attribute , E-element ,C-class , M-comment
+//scope attribute : is a isolate scope 
+//Symbols: (@ = text)
