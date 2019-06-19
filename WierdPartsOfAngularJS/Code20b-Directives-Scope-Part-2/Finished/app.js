@@ -46,3 +46,11 @@ myApp.directive("searchResult", function() {
        }
    }
 });
+
+//Note : A-attribute , E-element ,C-class , M-comment
+//scope attribute : is a isolate scope 
+//Symbols: 
+//1)    ("@" -> text) 
+//2)    ("=" -> object)  -- equals sign tells us that this is a two way binding,changes done in controller affects it value in main controller scope.
+
+
