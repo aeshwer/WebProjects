@@ -1,19 +1,20 @@
 SQL Questions: 
 
 TABLES:
-1)Use of Dual Table- used to perform Calcualtion,sequence generate and to select pseudo columns(sysdate or user)
+1)Use of Dual Table- used to perform Calcuataion,sequence generate and to select pseudo columns(sysdate or user)
 	Eg:
 	select 1*13 from  dual;   //(It has 1 row and 1 column and we can add more)
 	select user from  dual;
-        select sysdate from  dual;
+    select sysdate from  dual;
 	select Rownum r from  dual Connect By Rownum<=10;   (seq generate till 10)
+	//Usecases of rownum : https://www.techonthenet.com/oracle/functions/rownum.php
 
 2) How to backUp Table:
 	We can use CTAS(Create As)
-	Eg: select * from tableNew AS select * from tableSource
+	Eg: Create Table tableNew AS select * from tableSource
 
 3) Can we drop all columns from a table?
-	No - we get ORA-12983 error
+	No - we get ORA-12983 error  (cannot drop all columns from a table)
 
 4) What are Pseudo Column: behave like table column but are not stored in table,we can select them but cannot insert , update or delete their values
 	Eg: Sysdate, RowID, RowNum ,etc
@@ -35,20 +36,22 @@ FILTERS:
 
 DELETE AND TRUNCATE
 1) Which is faster between the two?
-	DELETE : used to selectively delete rows using where if not given where then all rows are deleted. We need to commit or rollback to do/undo changes.Deletes triggers on that table are fired.
+	DELETE : used to selectively delete rows using where if not given where then all rows are deleted. We need to commit or rollback the transaction to make changes permanent or to undo changes.Deletes triggers on that table are fired.
+	Eg: DELETE FROM table_name WHERE condition;
 	TRUNCATE : removes all rows from table.It dont affect triggers or dependencies. We cannot rollback.It is faster than delete 
+	Eg: TRUNCATE TABLE table_name;  
 
 2) Can we delete a record from more than one table simultaneously?
 	Yes, Eg:
-	Delete t1,t2 from t1 INNERJOIN t2 where t1.id=t2.id AND t2.id=t3.id; 
+	Delete t1,t2 from t1 INNERJOIN t2 where t1.id=t2.id AND t2.id>10	; 
 
 3) How to delete duplicate records?
 	Scenario : Table columns : department_Id, department_name ,branch . We have 2 same records.
-	solution : we have no way of identifying thes 2 same rows, so we use pseudo column rowid and find minimum of both and delete one of them. Eg:
+	solution : we have no way of identifying these 2 same rows, so we use pseudo column rowid and find minimum of both and delete one of them. Eg:
 		delete from department d1 where d1.rowid >
 		(    select min(d2.rowid) from department d2
-		     where d1.department_Id, = d2.department_Id;
-              	     and   d1.department_name = d2.department_name;
+		        where  d1.department_Id, = d2.department_Id;
+                 and   d1.department_name = d2.department_name;
 	             and   d1.branch=d2.branch;
 		)
 
@@ -56,13 +59,94 @@ JOINS
 1)  INNER : returns all rows from multiple table which match the condition
     LEFT OUTER :  returns all rows from left hand table specified in the "ON" condition and only thoes rows from other table whre joined fields are equal.
     SELF JOIN : table joins by itself
-	Eg: select e1.name as employee_name
-                   e2.ename as manager_name
-		from emp e1, emp e2
-		where e1.mgr = e2.empno;		
- 
+	Eg: select 	e1.name as employee_name
+                e2.ename as manager_name
+				from emp e1, emp e2
+				where e1.mgr = e2.empno;		
+	
+2) CARTESION Join : If we dont use join and do something like this : select * from sales s, customer c;	
+	Then if sales has 10 column and customer has 5 , then result will have 50rows
 	
 	
+DATATYPES:
+1) CHAR : stored data in fixed length, ie add trailing space at the end of data.(Takes n bytes)
+   VARCHAR	: To be used by orcale for future
+   VARCHAR2 : Stores only data(variable length text)
+   NCHAR : fixed length Unicide data is stored.(Takes 2n bytes)
+   
+2) Oracle does not support BOOLEAN datatype as column type.
+
+3) DATE :
+   TIMESTAMP : more finegrane than Date(millisecond vs second). It can also store time timezone eg : GMT
+
+FUNCTIONS
+1) What does INSTR() and SUBSTR() return?
+	SUBSTR is used to "extract a substring" from a string.
+	
+	INSTR is used to "return the location of a substring" in a string.
+	
+2) Conversion functions ? 
+	Used to typecast data from one datatype to other ,eg:TO_CHAR,TO_DATE etc.
+
+NULL's:
+1) What is the answer of these?
+	select 1 + null from dual;
+	select 1 * null from dual;
+	select 1 / null from dual;
+	Answer :NULL
+	
+2) NVL function : has 2 parms ,helps to replace null value with default value
+   NVL2 function : has 3 params , somehwhat like tertirary operator
+   NULL IF function  : has 2 parms, return null if both are equal
+   
+3) Can you modify a null column to not null column, if table has some data?
+	Yes- if the column does not have null values
+	no- if column has null values
+	
+4) select 'tom' || null || 'joe' from dual ? --output?? igonores the nulls
+	tomjoe
+
+	
+Integrity Constraint
+1) Name some ? -- Not null, unique ,primary key, foreign key, unique ,ref ,check , etc
+
+2) Can we create primary key constraint on one column and foreign key on other column?
+	Yes
+
+3) When we create a primary key , is a index is created by default?	
+	Yes, unique index are created
+	
+4) CASCASDE CONSTRAINTS? 
+	These are are used to drop all referntial integrity constraint that refer to primary key and unique keys in the table , 
+	Eg: DROP TABLE  table1 CASCASDE CONSTRAINTS
+	
+SEQUENCES AND SYNONYM
+1) SYNTAX : create sequence sequence_name 
+
+2) Can we alter sequence ?
+	Yes  SYNTAX: alter sequence x increment by -4;
+				 select x.nextval from dual;
+	
+3)Use the CREATE SYNONYM statement to create a synonym, which is an alternative name for a table,view, sequence, procedure, stored function etc
+
+EXTRA BASIC STUFF
+1) Difference between JOIN and SET?
+	SET Operations:  Used to combine similar kind of data from two or more tables. Eg: Union, Union all, Intersection and minus
+	JOIN : selects from 2 or more tables
+	Eg: 
+		SELECT City FROM Customers
+		UNION
+		SELECT City FROM Suppliers
+		ORDER BY City;
+		
+		Note :The data type of both query must be same
+
+2) What is a VIEW?
+	View is a virtual table based on the result set of an SQL statement. When we execute a view, data is pulled from the database and shown to user.
+	
+		
+DATABASE CONCEPTS
+		
 
 	
 
