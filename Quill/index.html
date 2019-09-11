@@ -1,0 +1,42 @@
+<html  ng-app>
+   <head>
+      <link rel = "stylesheet" type="text/css" href ="style.css">
+      <h1>QUILL EDITOR POC</h1>
+   </head>
+   <body>
+        <div class="header-panel-region">              
+            <button id="GiveMeHTML" type="button" ><b>GiveMeHTML</b></button>
+        </div>
+       
+       <div  id="htmlShowArea" class="header-panel-region">  
+            <textarea rows="1" cols="10">
+
+            </textarea>         
+        </div>
+       
+      <!-- Include stylesheet -->
+      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+      <!-- Create the editor container -->
+      <div id="editor">
+         <!--<p>Trade with <u>Trade Id: </u><strong>3774 </strong>Saved. </p>
+         <p><b>This is line 2</b></p>
+         <p><i>This is line 3 </i></p>-->
+      </div>
+      <!-- Include the Quill library -->
+      <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+      <!-- Initialize Quill editor -->
+      <script>
+         var quill = new Quill('#editor', {
+             modules:{
+                 toolbar: [
+                     [{ 'font': [] }],
+                     ['bold', 'italic', 'underline'],
+                     [{ 'align': [] }]
+                ]
+             },
+           theme: 'snow'
+         });
+      </script>
+      <script src= "app.js"></script>
+   </body>
+</html>
