@@ -1,0 +1,38 @@
+select * from department;
+
+select * from employees;
+
+--count of employees in each department
+select * from department a left outer join 
+(select b.dep_id ,count(*) as Employee_Count from employees b GROUP By b.dep_id ) c ON c.dep_id =a.dep_id;
+
+--note - this wont work
+select * from department a left outer join 
+(select count(*) as Employee_Count from employees b GROUP By b.dep_id ) c ON c.dep_id =a.dep_id;
+
+--count of employees in AUDIT department with salaray >3000
+select * from department a inner join 
+(select b.dep_id ,count(*) as Employee_Count from employees b where b.salary>3000 GROUP By b.dep_id ) c ON c.dep_id =a.dep_id and a.dep_id=2001;
+
+
+--employees records in AUDIT department with salaray >3000
+select * from department a inner join 
+(select * from employees b where b.salary>3000  ) c ON c.dep_id =a.dep_id and a.dep_id=2001;
+
+--avg salary of employees in All department 
+select * from department a left outer join 
+(select b.dep_id, avg(b.salary) as Avg_Salary from employees b GROUP by b.dep_id) c ON c.dep_id =a.dep_id; 
+
+--avg salary of employees in All department  with avg>2000
+select * from department a left outer join 
+(select b.dep_id, avg(b.salary) as Avg_Salary from employees b GROUP by b.dep_id HAVING avg(b.salary)>2000) c ON c.dep_id =a.dep_id; 
+
+--avg salary of employees in AUDIT department
+select * from department a left outer join 
+(select b.dep_id, avg(b.salary) as Avg_Salary from employees b GROUP by b.dep_id HAVING dep_id=2001) c ON c.dep_id =a.dep_id; 
+--2nd solution(inner join+having)
+select * from department a inner join 
+(select b.dep_id, avg(b.salary) as Avg_Salary from employees b GROUP by b.dep_id HAVING dep_id=2001) c ON c.dep_id =a.dep_id; 
+--2nd solution(inner join+and)
+select * from department a inner join 
+(select b.dep_id, avg(b.salary) as Avg_Salary from employees b GROUP by b.dep_id) c ON c.dep_id =a.dep_id and a.dep_id=2001;  
