@@ -98,6 +98,7 @@ NULL's:
 2) NVL function : has 2 parms ,helps to replace null value with default value
    NVL2 function : has 3 params , somehwhat like tertirary operator
    NULL IF function  : has 2 parms, return null if both are equal
+   useCase: https://dzone.com/articles/two-practical-examples-of-the-oracle-nvl-function
    
 3) Can you modify a null column to not null column, if table has some data?
 	Yes- if the column does not have null values
