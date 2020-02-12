@@ -36,3 +36,16 @@ select * from department a inner join
 --2nd solution(inner join+and)
 select * from department a inner join 
 (select b.dep_id, avg(b.salary) as Avg_Salary from employees b GROUP by b.dep_id) c ON c.dep_id =a.dep_id and a.dep_id=2001;  
+
+
+---Write a query in SQL to list the name of the departments where highest number of employees are working.
+
+SELECT dep_name FROM department WHERE dep_id IN
+(SELECT dep_id FROM employees GROUP BY dep_id HAVING count(*) IN 
+(SELECT MAX (mycount) FROM
+(SELECT COUNT(*) mycount FROM employees GROUP BY dep_id) a));
+
+2nd solution (or)
+
+SELECT dep_name FROM department WHERE dep_id IN
+(SELECT count(*), dep_id FROM employees GROUP BY dep_id HAVING count(*) = (SELECT MAX(COUNT(*)) mycount FROM employees GROUP BY dep_id));

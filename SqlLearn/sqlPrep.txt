@@ -28,8 +28,8 @@ FILTERS:
 	EXISTS : first row from outer query is selected , then inner query is executed and the outer query uses this output.The process then repeats for all rows of outer query
 
 2) Difference Between HAVING and WHERE?
-	WHERE : is used to filter out the data "before" the aggregation takes place 
-	HAVING : is used to filter out the data "after" the aggregation takes place 
+	WHERE : is used to filter out the data "before" the aggregation takes place  ..works on indivisual columns
+	HAVING : is used to filter out the data "after" the aggregation takes place ..also works on group by columns 
 	Eg:
 	select payment_term_detail_num from ref_payment_term_detail where payment_term_detail_num in(114,110,12,13)
 	group by payment_term_detail_num having sum(payment_term_detail_num) >15
